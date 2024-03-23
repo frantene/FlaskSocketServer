@@ -1,0 +1,18 @@
+.vertical {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+}
+
+body {
+    background-color: gray
+}
+
+table {
+    width: 100%;
+}
+
+table, th, td, tr{
+    border: 1px solid;
+    wrap: none;
+}

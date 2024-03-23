@@ -1,0 +1,29 @@
+{
+    "48669962": {
+        "RoomName": "Hello",
+        "MembersList": {
+            "bcebed39-6d14-4dc8-b2a4-05aff3cb7fd7": "GamerVerse",
+            "074f286a-993b-48da-9f91-2f277e4e7261": "AmongUs"
+        },
+        "MessageHistory": []
+    },
+    "07675819": {
+        "RoomName": "Nerds",
+        "MembersList": {
+            "852d1b2a-c41a-434d-845a-e8b83a69a32e": "Brody",
+            "a64c42d0-99c7-493a-89c0-feee57ca52dd": "Taiden"
+        },
+        "MessageHistory": [
+            {
+                "PlayerName": "Brody",
+                "Message": "Hello Room Nerds",
+                "Time": "11:44:03 PM"
+            },
+            {
+                "PlayerName": "Taiden",
+                "Message": "No",
+                "Time": "11:44:03 PM"
+            }
+        ]
+    }
+}

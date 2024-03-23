@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+    <script src="static/index.js"></script>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <form method="post" action="/create">
+        <h2>Create Room</h2>
+        <label>Username: </label><input name="username">
+        <br>
+        <label>Room Name:</label><input name="room_name">
+        <br>
+        <button type="submit">Create Room</button>
+    </form>
+    <form method="post" action="/join">
+        <h2>Join Room</h2>
+        <label>Username: </label><input name="username">
+        <br>
+        <label>Room Code:</label><input name="room_code">
+        <br>
+        <button type="submit">Create Room</button>
+    </form>
+    <br>
+    <h2>Send Message</h2>
+    <div class="vertical">
+        <div>
+            <label>Name: </label><input id="firstname" onkeypress="handleKeyPress(event, 1)">
+        </div>
+        <div>
+            <label>Message to Server: </label><input id="Message" onkeypress="handleKeyPress(event, 1)">
+        </div>
+    </div>
+    <div>
+        <ul>
+            <li id="UUID"></li>
+            <li id="Name"></li>
+            <li id="Time"></li>
+            <li id="serverMessage"></li>
+        </ul>
+    </div>
+    <div class="vertical">
+        <table id="history">
+            <tr>
+                <th>Username</th>
+                <th>Message</th>
+                <th>Date</th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -68,10 +68,12 @@ class Room:
         self.rooms[code]['MembersList'][user_uuid] = username
         return user_uuid
 
-    def remove_player(self, code: str, player_uuid: str) -> None:
+    def remove_player(self, code: str, player_uuid: str) -> bool:
         self.rooms[code]['MembersList'].pop(player_uuid)
         if len(self.rooms[code]['MembersList']) <= 0:
             self.delete_room(code)
+            return True
+        return False
 
     def get_player_name(self, code: str, player_uuid: str) -> str:
         return self.rooms[code]['MembersList'][player_uuid]

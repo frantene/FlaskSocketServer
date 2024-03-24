@@ -34,3 +34,7 @@ body {
 .Message-Time {
     font-size: 13px;
 }
+
+#Message-Input {
+    width: 35rem;
+}

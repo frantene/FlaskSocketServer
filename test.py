@@ -1,21 +1,29 @@
-from utilities.function import Room
-# import pprint
-import json
+from utilities.function import Room, Usertime
+import threading
+import pprint
+import time
+
+user_time = Usertime()
 
 
-room = Room()
+def loop_function():
+    while user_time.user_timer_overlimit('GamerVerse') is False:
+        user_time.user_timer_up()
+        print(user_time.time)
+        time.sleep(1)
 
-code = room.create_room("Hello")
 
-room.add_player(code, "GamerVerse")
-room.add_player(code, "AmongUs")
+def later_add():
+    time.sleep(3)
+    user_time.add_user('Money')
 
-code = room.create_room("Nerds")
-uuid1 = room.add_player(code, "Brody")
-uuid2 = room.add_player(code, "Taiden")
 
-room.add_message(code, uuid1, "Hello Room Nerds")
-room.add_message(code, uuid2, "No")
+user_time.add_user('GamerVerse')
 
-data = json.dumps(room.rooms, indent=4)
-open('sample.json', 'w').write(data)
+# Correct the threading target function calls, remove the parentheses ()
+threading.Thread(target=loop_function).start()
+threading.Thread(target=later_add()).start()
+
+# time.sleep(9)
+
+print(user_time.user_timer_overlimit('GamerVerse'), user_time.user_timer_overlimit('Money'))

@@ -16,3 +16,30 @@ table, th, td, tr{
     border: 1px solid;
     wrap: none;
 }
+
+.Message-Container {
+    margin: 0.5rem;
+}
+
+#Messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.Message-Header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.2rem;
+}
+
+.Message-Container p {
+    margin: 0;
+}
+
+.Message-User {
+    padding-right: 1em;
+}
+
+.Message-Time {
+    font-size: 13px;
+}

@@ -1,16 +1,13 @@
 from flask import Flask, render_template, session, redirect, request, url_for
 from flask_socketio import SocketIO, join_room, leave_room
-from utilities.function import generate_code
+from utilities.function import Room
 from datetime import datetime
-import uuid
-
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
-rooms: dict = {}
-members_names: dict = {}
+rooms = Room()
 
 
 @app.route('/')
@@ -21,23 +18,12 @@ def main():
 @app.route('/create', methods=['GET', 'POST'])
 def form_room_create():
     if request.method == 'POST':
-        while True:
-            code: str = generate_code(8)
-            if code not in rooms:
-                directory: str = f'/room/{code}'
-                break
+        code: str = rooms.create_room(request.form['room_name'])
+        player_uuid: str = rooms.add_player(code, request.form['username'])
 
-        rooms[code] = {
-            'RoomName': request.form['room_name'],
-            'MembersList': [],
-            'MessageHistory': []
-        }
-        session['Username'] = request.form['username']
-        session['UUID'] = str(uuid.uuid4())
-        session['Room'] = code
-        members_names[session['UUID']] = session['Username']
-        print(f'Create: {rooms=}')
-        return redirect(directory)
+        session['UUID']: str = player_uuid
+        session['Room']: str = code
+        return redirect(f'/room/{code}')
 
     session['Main'] = []
     return redirect(url_for('main'))
@@ -45,20 +31,14 @@ def form_room_create():
 
 @app.route('/join', methods=['GET', 'POST'])
 def form_room_join():
-    print("1")
     if request.method == 'POST':
-        print(f'Join: {rooms=}')
-        print('2')
-        code = request.form['room_code']
-        if code in rooms.keys():
-            print('if')
-            session['Username'] = request.form['username']
-            session['UUID'] = str(uuid.uuid4())
-            session['Room'] = code
-            members_names[session['UUID']] = session['Username']
+        code: str = request.form['room_code']
+        if rooms.room_exist(code):
+            player_uuid: str = rooms.add_player(code, request.form['username'])
+            session['UUID']: str = player_uuid
+            session['Room']: str = code
             return redirect(f'/room/{code}')
         else:
-            print('else')
             return redirect(url_for('main'))
 
     return redirect(url_for('main'))
@@ -66,17 +46,17 @@ def form_room_join():
 
 @app.route('/data')
 def data():
-    return [rooms, members_names]
+    return rooms.rooms
 
 
 @app.route('/room/<code>')
 def room(code):
-    print(f'room code: {rooms=}')
-    if session.get('UUID') is None or session.get('Username') is None:
+    if session.get('UUID') is None:
         return redirect(url_for('main'))
 
-    if code in rooms.keys() and session.get('UUID') not in rooms[code].get('MembersList'):
-        return render_template("room.html")
+    if rooms.room_exist(code) and rooms.room_member_exist(code, session.get('UUID')):
+        return render_template("room.html", code=code, title=rooms.get_room_name(code))
+
     else:
         return redirect(url_for('main'))
 
@@ -94,32 +74,27 @@ def handle_message(message):
 
 
 @socketio.on('room join')
-def room_join(_):
-    if rooms.get(session['Room']) is not None:
-        rooms[session['Room']]['MembersList'].append(session['UUID'])
+def room_join():
+    if rooms.room_exist(session['Room']):
         join_room(session['Room'])
-        temp_data = {
-            'MemberList': [],
-            'MessageHistory': []
-        }
-        for x in rooms[session['Room']]['MembersList']:
-            temp_data['MemberList'].append(members_names[x])
-
-        socketio.emit("room name", rooms[session['Room']]['RoomName'], to=session['Room'])
+        join_room(session['UUID'])
+        socketio.emit('member_list', rooms.get_room_members(session['Room']), to=session['Room'])
+        socketio.emit('message_history', rooms.get_message_history(session['Room']), to=session['UUID'])
 
 
-@socketio.on('connect')
-def connect():
-    print(session['UUID'], "connected")
+@socketio.on('room messages')
+def handle_message(message):
+    if rooms.room_exist(session['Room']):
+        socketio.emit('message_history', [rooms.add_message(session['Room'], session['UUID'], message)], to=session['Room'])
 
 
 @socketio.on('disconnect')
 def room_leave():
-    if session.get('Room') in rooms.keys():
-        rooms[session['Room']]['MembersList'].remove(session['UUID'])
-        if len(rooms[session['Room']]['MembersList']) == 0:
-            del rooms[session['Room']]
+    if rooms.room_exist(session['Room']):
+        rooms.remove_player(session['Room'], session['UUID'])
+        socketio.emit("member_list", rooms.get_room_members(session['Room']), to=session['Room'])
         leave_room(session['Room'])
+        leave_room(session['UUID'])
 
 
 if __name__ == '__main__':

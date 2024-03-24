@@ -2,6 +2,7 @@ from typing import Dict, List
 from datetime import datetime
 import random
 import uuid
+import json
 
 
 def generate_code(length: int) -> str:
@@ -11,9 +12,40 @@ def generate_code(length: int) -> str:
     return code
 
 
+class Usertime:
+    def __init__(self, timelimit: int = 10):
+        self.time: Dict[str, int] = {}
+        self.timelimit: int = timelimit
+
+    def add_user(self, user_uuid: str) -> None:
+        self.time[user_uuid] = 0
+
+    def remove_user(self, user_uuid: str) -> None:
+        del self.time[user_uuid]
+
+    def reset_user_timer(self, user_uuid: str) -> None:
+        self.time[user_uuid] = 0
+
+    def user_timer_up(self) -> None:
+        for x in self.time:
+            if self.user_timer_overlimit(x) is False:
+                self.time[x] += 1
+
+    def user_timer_overlimit(self, user_uuid: str) -> bool:
+        if self.time[user_uuid] >= self.timelimit:
+            return True
+        else:
+            return False
+
+
 class Room:
     def __init__(self) -> None:
         self.rooms: Dict[str, dict] = {}
+
+    def write_file(self, output_dir: str) -> None:
+        d = open(output_dir, 'w')
+        d.write(json.dumps(self.rooms, indent=4))
+        d.close()
 
     def create_room(self, room_name: str, length: int = 8) -> str:
         while True:
@@ -37,7 +69,7 @@ class Room:
         return user_uuid
 
     def remove_player(self, code: str, player_uuid: str) -> None:
-        del self.rooms[code]['MembersList'][player_uuid]
+        self.rooms[code]['MembersList'].pop(player_uuid)
         if len(self.rooms[code]['MembersList']) <= 0:
             self.delete_room(code)
 
@@ -67,3 +99,9 @@ class Room:
             return True
         else:
             return False
+
+    def get_room_name(self, code: str) -> str:
+        return self.rooms[code]['RoomName']
+
+    def get_room_members(self, code: str) -> dict:
+        return self.rooms[code]['MembersList']

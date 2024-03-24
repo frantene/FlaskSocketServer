@@ -9,14 +9,34 @@
 </head>
 <body>
     <center>
-        <h1>Room: <span id="RoomName"></span></h1>
+        <h1>Room: {{ title }}</h1>
     </center>
-    <h2>Room Code: <span id="RoomCode"></span></h2>
+    <h2>Room Code: {{ code}}</h2>
     <div>
         <h3>Member List</h3>
-        <ul>
-
+        <ul id="MemberList">
         </ul>
+    </div>
+    <div>
+        <label>Message</label>
+        <input id="Message-Input" onkeypress="handleKeyPress(event, 1)">
+        <button>Send</button>
+    </div>
+    <div id="Messages">
+        <div class="Message-Container">
+            <div class="Message-Header">
+                <p class="Message-User">Gamer Verse</p>
+                <p class="Message-Time">02:30:15 PM</p>
+            </div>
+            <p class="Message-Message">This is my message that i sent</p>
+        </div>
+        <div class="Message-Container">
+            <div class="Message-Header">
+                <p class="Message-User">Gamer Verse</p>
+                <p class="Message-Time">02:30:15 PM</p>
+            </div>
+            <p class="Message-Message">This is my message that i sent</p>
+        </div>
     </div>
 </body>
 </html>

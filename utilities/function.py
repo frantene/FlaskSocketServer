@@ -13,7 +13,7 @@ def generate_code(length: int) -> str:
 
 
 class Usertime:
-    def __init__(self, timelimit: int = 10):
+    def __init__(self, timelimit: int = 10) -> None:
         self.time: Dict[str, int] = {}
         self.timelimit: int = timelimit
 

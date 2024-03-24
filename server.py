@@ -88,8 +88,7 @@ def handle_message(message):
 
 @socketio.on('disconnect')
 def room_leave():
-    print(request.sid)
-    if rooms.room_exist(session['Room']):
+    if rooms.room_exist(session.get('Room', None)):
         rooms.remove_player(session['Room'], session['UUID'])
         socketio.emit("member_list", rooms.get_room_members(session['Room']), to=session['Room'])
         leave_room(session['Room'])

@@ -8,15 +8,6 @@ body {
     background-color: gray
 }
 
-table {
-    width: 100%;
-}
-
-table, th, td, tr{
-    border: 1px solid;
-    wrap: none;
-}
-
 .Message-Container {
     margin: 0.5rem;
 }

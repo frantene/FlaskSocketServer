@@ -1,17 +1,27 @@
 from flask import Flask, render_template, session, redirect, request, url_for
 from flask_socketio import SocketIO, join_room, leave_room
-from utilities.function import Room
+from utilities.function import Room, Usertime
 from datetime import datetime
+import threading
+import time
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
 rooms = Room()
+user_time = Usertime()
+
+
+def second_clock():
+    while True:
+        user_time.user_timer_up()
+        time.sleep(1)
 
 
 @app.route('/')
 def main():
+    session.clear()
     return render_template('index.html')
 
 
@@ -61,18 +71,6 @@ def room(code):
         return redirect(url_for('main'))
 
 
-@socketio.on('my event')
-def handle_message(message):
-    user = {
-        'Name': message['Name'],
-        'UUID': session['UUID'],
-        'serverMessage': message['data'],
-        'Time': datetime.now().strftime("%b %d, %Y %H:%M:%S"),
-    }
-    session['Main'].append(user)
-    socketio.emit('new_data', user)
-
-
 @socketio.on('room join')
 def room_join():
     if rooms.room_exist(session['Room']):
@@ -90,6 +88,7 @@ def handle_message(message):
 
 @socketio.on('disconnect')
 def room_leave():
+    print(request.sid)
     if rooms.room_exist(session['Room']):
         rooms.remove_player(session['Room'], session['UUID'])
         socketio.emit("member_list", rooms.get_room_members(session['Room']), to=session['Room'])
@@ -98,4 +97,5 @@ def room_leave():
 
 
 if __name__ == '__main__':
+    # threading.Thread(target=second_clock).start()
     socketio.run(app, debug=True, allow_unsafe_werkzeug=True, host='0.0.0.0')

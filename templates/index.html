@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
-    <script src="static/index.js"></script>
-    <link rel="stylesheet" href="static/style.css">
+    <script src="static/script/index.js"></script>
+    <link rel="stylesheet" href="static/style/style.css">
 </head>
 <body>
     <form method="post" action="/create">
@@ -20,9 +20,9 @@
         <h2>Join Room</h2>
         <label>Username: </label><input name="username">
         <br>
-        <label>Room Code:</label><input name="room_code">
+        <label>Room Code:</label><input name="room_code" type=number>
         <br>
-        <button type="submit">Join Room</button>
+        <button type='submit'>Join Room</button>
     </form>
 </body>
 </html>

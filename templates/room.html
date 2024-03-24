@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
-    <link rel="stylesheet" href="/static/style.css">
-    <script src="/static/room.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/style/style.css">
+    <script src="/static/script/clipboard.js"></script>
+    <script src="/static/script/room.js"></script>
 </head>
 <body>
     <center>
         <h1>Room: {{ title }}</h1>
     </center>
-    <h2>Room Code: {{ code}}</h2>
+    <h2 onclick="copyCodeToClipboard();">Room Code: <span id='RoomCode'>{{ code }}</span> <i class="fa fa-copy"></i></h2>
     <div>
         <h3>Member List</h3>
         <ul id="MemberList">

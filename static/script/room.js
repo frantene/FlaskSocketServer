@@ -12,16 +12,14 @@ socket.on('member_list', function(members) {
 
 socket.on('message_history', function(messages) {
     var message_history = document.getElementById('Messages');
-    console.log(messages);
     for (let x in messages) {
-        console.log(messages[x]);
         message_history.innerHTML += `
            <div class="Message-Container">
                 <div class="Message-Header">
                     <p class="Message-User">${messages[x]['PlayerName']}</p>
                     <p class="Message-Time">${messages[x]['Time']}</p>
                 </div>
-                <p class="Message-Message">${messages[x]['Message']}</p>
+                <p class="Message-Message">${escapeHTMLString(messages[x]['Message'])}</p>
             </div>
         `;
     }
@@ -30,6 +28,7 @@ socket.on('message_history', function(messages) {
 function sendMessage(){
     if (document.getElementById("Message-Input").value != '') {
         var user_message = document.getElementById("Message-Input").value;
+        document.getElementById("Message-Input").value = '';
         socket.emit('room messages', user_message);
     }
 }
@@ -41,4 +40,12 @@ function handleKeyPress(event, choice) {
                 sendMessage();
         }
     }
+}
+
+function copyCodeToClipboard() {
+    copyTextToClipboard(document.getElementById('RoomCode').innerHTML);
+}
+
+function escapeHTMLString(inputString) {
+    return inputString.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }

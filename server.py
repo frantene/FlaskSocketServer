@@ -1,7 +1,6 @@
 from flask import Flask, render_template, session, redirect, request, url_for
 from flask_socketio import SocketIO, join_room, leave_room
 from utilities.function import Room, Usertime
-from datetime import datetime
 import threading
 import time
 
@@ -88,7 +87,8 @@ def handle_message(message):
 
 @socketio.on('disconnect')
 def room_leave():
-    if rooms.room_exist(session.get('Room', None)):
+    print(rooms.room_exist(session.get('Room')))
+    if rooms.room_exist(session.get('Room', False)):
         rooms.remove_player(session['Room'], session['UUID'])
         socketio.emit("member_list", rooms.get_room_members(session['Room']), to=session['Room'])
         leave_room(session['Room'])

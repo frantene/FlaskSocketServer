@@ -5,11 +5,16 @@ import uuid
 import json
 
 
-def generate_code(length: int) -> str:
+def generate_code(length: int = 8) -> str:
     code: str = ""
     for _ in range(length):
         code += str(random.randint(0, 9))
     return code
+
+
+class Newsession:
+    def __init__(self) -> None:
+        self.session: Dict[str, dict] = {}
 
 
 class Usertime:

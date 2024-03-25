@@ -34,7 +34,6 @@ def form_room_create():
         session['Room']: str = code
         return redirect(f'/room/{code}')
 
-    session['Main'] = []
     return redirect(url_for('main'))
 
 

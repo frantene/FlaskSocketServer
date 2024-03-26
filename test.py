@@ -1,23 +1,28 @@
-from utilities.function import Room, Usertime, generate_code, Newsession
-import threading
 import pprint
-import time
+class Test:
+    def __init__(self):
+        self.main = [True]
+        self.other = "String is inherited"
+        self.inheritance = self.Inheritance(self.main)
 
-user_time = Usertime()
+    class Inheritance:
+        def __init__(self, main):
+            self.main = main
+            self.main.append('Hi')
 
+        def add_data(self, number):
+            self.main.append(number)
 
-def loop_function():
-    while True:
-        user_time.user_timer_up()
-        print(user_time.time)
-        time.sleep(1)
+    def data(self):
+        return {'Main': self.main,
+                'Inherited': self.other}
 
+# Create an instance of the Test class
+test_instance = Test()
 
-def later_add():
-    time.sleep(3)
-    user_time.add_user(generate_code())
+# Call the add_data method
+test_instance.inheritance.add_data(5)
 
+# Access the data using the data() method
+pprint.pp(test_instance.data(), indent=2)
 
-user_time.add_user('GamerVerse')
-threading.Thread(target=loop_function).start()
-threading.Thread(target=later_add).start()

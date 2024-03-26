@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Any # Ignore
 from datetime import datetime
 import random
 import uuid
@@ -17,7 +17,7 @@ class Newsession:
         """
         Initialize a newsession as an alternative to flask session
         """
-        self.session: Dict[str, dict] = {}
+        self.session: Dict[str, Dict[str, Any]] = {}
 
     def user_add(self, user_uuid: str) -> None:
         """
@@ -25,7 +25,7 @@ class Newsession:
         :param user_uuid: str
         :return: None
         """
-        self.session[user_uuid]: Dict[str, str | bool] = {
+        self.session[user_uuid] = {
             'Room': '',
             'Connected': False,
         }
@@ -37,6 +37,15 @@ class Newsession:
         :return: None
         """
         self.session.pop(user_uuid, None)
+
+    def user_room_add(self, user_uuid: str, room_code: str) -> None:
+        """
+        Sets user room code given their user_uuid and room_code
+        :param user_uuid: str
+        :param room_code: str
+        :return: None
+        """
+        self.session[user_uuid]['Room'] = room_code
 
     def get_user_exist(self, user_uuid: str) -> bool:
         """
@@ -73,7 +82,7 @@ class Usertime:
         Initialize Usertime to store user online time given a optional timelimit
         :param timelimit: int
         """
-        self.time: Dict[str, int] = {}
+        self.time: Dict[str, int | float] = {}
         self.timelimit: int = timelimit
         self.time_interval: float | int = time_interval
 
@@ -136,7 +145,7 @@ class Room:
             code: str = generate_code(length)
             if code not in self.rooms:
                 break
-        room_data: Dict[str, List] = {
+        room_data: Dict[str, str | dict | list] = {
             'RoomName': room_name,
             'MembersList': {},
             'MessageHistory': []

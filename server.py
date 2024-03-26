@@ -1,5 +1,5 @@
 from flask import Flask, render_template, session, redirect, request, url_for
-from flask_socketio import SocketIO, join_room, leave_room
+from flask_socketio import SocketIO, join_room, leave_room  # type: ignore
 from utilities.function import Room, Usertime
 import threading
 import time
@@ -30,8 +30,8 @@ def form_room_create():
         code: str = rooms.create_room(request.form['room_name'])
         player_uuid: str = rooms.add_player(code, request.form['username'])
 
-        session['UUID']: str = player_uuid
-        session['Room']: str = code
+        session['UUID'] = player_uuid
+        session['Room'] = code
         return redirect(f'/room/{code}')
 
     return redirect(url_for('main'))
@@ -43,8 +43,8 @@ def form_room_join():
         code: str = request.form['room_code']
         if rooms.room_exist(code):
             player_uuid: str = rooms.add_player(code, request.form['username'])
-            session['UUID']: str = player_uuid
-            session['Room']: str = code
+            session['UUID'] = player_uuid
+            session['Room'] = code
             return redirect(f'/room/{code}')
         else:
             return redirect(url_for('main'))
@@ -62,7 +62,7 @@ def room(code):
     if session.get('UUID') is None:
         return redirect(url_for('main'))
 
-    if rooms.room_exist(code) and rooms.room_member_exist(code, session.get('UUID')):
+    if rooms.room_exist(code) and rooms.room_member_exist(code, session.get('UUID', 'Null')):
         return render_template("room.html", code=code, title=rooms.get_room_name(code))
 
     else:
@@ -87,7 +87,7 @@ def handle_message(message):
 @socketio.on('disconnect')
 def room_leave():
     if rooms.room_exist(session.get('Room', None)):
-        is_room_deleted: bool = rooms.remove_player(session['Room'], session['UUID'])
+        is_room_deleted: bool | None = rooms.remove_player(session['Room'], session['UUID'])
         if is_room_deleted is False:
             socketio.emit("member_list", rooms.get_room_members(session['Room']), to=session['Room'])
         leave_room(session['Room'])

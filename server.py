@@ -9,13 +9,13 @@ app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
 rooms = Room()
-user_time = Usertime()
+user_time = Usertime(time_interval=0.1)
 
 
 def second_clock():
     while True:
         user_time.user_timer_up()
-        time.sleep(1)
+        time.sleep(0.1)
 
 
 @app.route('/')

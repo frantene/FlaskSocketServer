@@ -68,13 +68,14 @@ class Newsession:
 
 
 class Usertime:
-    def __init__(self, timelimit: int = 10) -> None:
+    def __init__(self, timelimit: int = 10, time_interval: float | int = 1) -> None:
         """
         Initialize Usertime to store user online time given a optional timelimit
         :param timelimit: int
         """
         self.time: Dict[str, int] = {}
         self.timelimit: int = timelimit
+        self.time_interval: float | int = time_interval
 
     def add_user(self, user_uuid: str) -> None:
         """
@@ -102,12 +103,12 @@ class Usertime:
 
     def user_timer_up(self) -> None:
         """
-        Counts up all timers up by 1 second
+        Counts up all timers up by the specified amount of time specified from instance
         :return: None
         """
         for x in self.time:
             if self.user_over_timelimit(x) is False:
-                self.time[x] += 1
+                self.time[x] += self.time_interval
 
     def user_over_timelimit(self, user_uuid: str) -> bool:
         """

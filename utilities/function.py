@@ -200,3 +200,7 @@ class Room:
 
     def get_room_members(self, code: str) -> dict:
         return self.rooms[code]['MembersList']
+
+    class Uno:
+        def __init__(self):
+            pass

@@ -886,5 +886,533 @@
         "Number": 9,
         "Color": "Yellow",
         "Speed": true
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "Block",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "Reverse",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "Replay",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "#",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "#",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "#",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "#",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "+1",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "+2",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "+2",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "+2",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "+2",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "+2",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "+2",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "+2",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "+2",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "+2",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "+2",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "+2",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "+2",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "+4",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "+4",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "+4",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "+4",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
+    },
+    {
+        "Name": "-1",
+        "Number": "",
+        "Color": "Red",
+        "Speed": false
+    },
+    {
+        "Name": "-1",
+        "Number": "",
+        "Color": "Blue",
+        "Speed": false
+    },
+    {
+        "Name": "-1",
+        "Number": "",
+        "Color": "Green",
+        "Speed": false
+    },
+    {
+        "Name": "-1",
+        "Number": "",
+        "Color": "Yellow",
+        "Speed": false
     }
 ]

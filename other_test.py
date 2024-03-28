@@ -2,6 +2,7 @@ import json
 from typing import Dict, List, TypedDict
 import pprint
 
+
 class MyDict(TypedDict):
     Name: str
     Amount: int
@@ -12,21 +13,61 @@ class MyDict(TypedDict):
 #     data = json.load(f)
 
 my_dict: List[MyDict] = [
-{
-    "Name": "1-9",
-    "Amount": 3,
-    "Speed": False
-},
-{
-    "Name": "0",
-    "Amount": 1,
-    "Speed": False
-},
-{
-    "Name": "1-9",
-    "Amount": 1,
-    "Speed": True
-}
+    {
+        "Name": "1-9",
+        "Amount": 3,
+        "Speed": False
+    },
+    {
+        "Name": "0",
+        "Amount": 1,
+        "Speed": False
+    },
+    {
+        "Name": "1-9",
+        "Amount": 1,
+        "Speed": True
+    },
+    {
+        "Name": "Block",
+        "Amount": 4,
+        "Speed": False
+    },
+    {
+        "Name": "Reverse",
+        "Amount": 4,
+        "Speed": False
+    },
+    {
+        "Name": "Replay",
+        "Amount": 4,
+        "Speed": False
+    },
+    {
+        "Name": "#",
+        "Amount": 1,
+        "Speed": False
+    },
+    {
+        "Name": "+1",
+        "Amount": 4,
+        "Speed": False
+    },
+    {
+        "Name": "+2",
+        "Amount": 3,
+        "Speed": False
+    },
+    {
+        "Name": "+4",
+        "Amount": 1,
+        "Speed": False
+    },
+    {
+        "Name": "-1",
+        "Amount": 1,
+        "Speed": False
+    }
 ]
 
 final_list = []
@@ -43,12 +84,23 @@ for x in my_dict:
                         "Speed": x['Speed']
                     }
                     final_list.append(var)
+
     elif x['Name'] == '0':
         for color in ['Red', 'Blue', 'Green', 'Yellow']:
             for _ in range(0, x['Amount']):
                 var = {
-                    "Name": '0',
+                    "Name": x['Name'],
                     "Number": '0',
+                    "Color": color,
+                    "Speed": x['Speed']
+                }
+                final_list.append(var)
+    elif x['Name'] in ['Block', 'Reverse', 'Replay', '#', '+1', '+2', '+4', '-1']:
+        for color in ['Red', 'Blue', 'Green', 'Yellow']:
+            for _ in range(0, x['Amount']):
+                var = {
+                    "Name": x['Name'],
+                    "Number": '',
                     "Color": color,
                     "Speed": x['Speed']
                 }

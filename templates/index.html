@@ -5,24 +5,47 @@
     <title>Title</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
     <script src="static/script/index.js"></script>
-    <link rel="stylesheet" href="static/style/style.css">
+    <link rel="stylesheet" href="static/style/index.css">
 </head>
-<body>
-    <form method="post" action="/create">
-        <h2>Create Room</h2>
-        <label>Username: </label><input name="username">
-        <br>
-        <label>Room Name:</label><input name="room_name">
-        <br>
-        <button type="submit">Create Room</button>
+<body><center>
+    <form class="form" method="post" action="/create">
+        <h2 class="form-title">Create Room</h2>
+      <div class="input-container">
+      <input placeholder="Username*" name="username">
+        <span>
+        </span>
+        </div>
+      <div class="input-container">
+      <input placeholder="Room Name" name="room_name">
+        <span>
+        </span>
+        </div>
+        <button class="submit" type="submit">Create Room</button>
+      <p class="signup-link">
+        * Are Required
+        <!--<a href="">Sign up</a>-->
+      </p>
     </form>
-    <form method="post" action="/join">
-        <h2>Join Room</h2>
-        <label>Username: </label><input name="username">
-        <br>
-        <label>Room Code:</label><input name="room_code" type=number>
-        <br>
-        <button type='submit'>Join Room</button>
+  <br>
+  <br>
+  <br>
+<form class="form" method="post" action="/join">
+      <h2 class="form-title">Join Room</h2>
+  <div class="input-container">
+  <input placeholder="Username*" name="username">
+    <span>
+    </span>
+    </div>
+  <div class="input-container">
+  <input placeholder="Room Code*" name="room_code" type=number>
+    <span>
+    </span>
+    </div>
+        <button class="submit" type='submit'>Join Room</button>
+  <p class="signup-link">
+    * Are Required
+    <!--<a href="">Sign up</a>-->
+  </p>
     </form>
-</body>
+</body></center>
 </html>
